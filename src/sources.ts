@@ -1,0 +1,32 @@
+import type { SourceDefinition } from "./types";
+
+export const DEFAULT_PUBLIC_BASE_URL = "https://woohyun-park.github.io/rss/";
+export const PUBLIC_BASE_URL = process.env.PUBLIC_BASE_URL ?? DEFAULT_PUBLIC_BASE_URL;
+
+export const sourceDefinitions: SourceDefinition[] = [
+  {
+    id: "evan-moon",
+    title: "Evans Library",
+    siteUrl: "https://evan-moon.github.io/",
+    feedFile: "evan-moon.xml",
+  },
+  {
+    id: "hoseung",
+    title: "hoseung.me",
+    siteUrl: "https://blog.hoseung.me/",
+    feedFile: "hoseung.xml",
+  },
+  {
+    id: "hewon",
+    title: "Hewon Jeong",
+    siteUrl: "https://hewon.dev/",
+    feedFile: "hewon.xml",
+  },
+  {
+    id: "hiddenest",
+    title: "hiddenest",
+    siteUrl: "https://hiddenest.dev/",
+    feedFile: "hiddenest.xml",
+  },
+];
+

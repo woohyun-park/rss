@@ -1,0 +1,27 @@
+{
+  "name": "rss",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "build": "tsx src/build.ts",
+    "check": "tsc --noEmit",
+    "lint": "npm run check",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "cheerio": "^1.0.0",
+    "fast-xml-parser": "^5.8.0",
+    "rss": "^1.2.2"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.2",
+    "@types/rss": "^0.0.32",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.2",
+    "vitest": "^4.1.7"
+  }
+}
