@@ -7,6 +7,7 @@ import {
   parseSitemapUrlEntries,
 } from "../src/collectors/sitemap";
 import { parseHewonIndex } from "../src/collectors/hewon";
+import { parseRssFeed } from "../src/collectors/rssFeed";
 
 describe("source collectors", () => {
   it("parses Evan Moon Gatsby page-data without using the oversized RSS feed", () => {
@@ -100,6 +101,39 @@ describe("source collectors", () => {
         publishedAt: "2025-08-26T15:00:00.000Z",
       }),
     );
+  });
+
+  it("parses a full-content RSS feed into slim items without the encoded body", () => {
+    const xml = `<?xml version="1.0" encoding="UTF-8"?>
+      <rss xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0">
+        <channel>
+          <title><![CDATA[jeong-min.com RSS Feed]]></title>
+          <item>
+            <title><![CDATA[Terraform, 테라 폼 미쳤다]]></title>
+            <description><![CDATA[다들 테라 좋아하시나요?]]></description>
+            <link>https://jeong-min.com/87-terraform/</link>
+            <guid isPermaLink="false">https://jeong-min.com/87-terraform/</guid>
+            <pubDate>Mon, 30 Mar 2026 00:00:00 GMT</pubDate>
+            <content:encoded><![CDATA[<p>FULL HTML BODY THAT MUST BE IGNORED</p>]]></content:encoded>
+          </item>
+        </channel>
+      </rss>`;
+
+    const items = parseRssFeed(xml, {
+      sourceId: "jeong-min",
+      sourceTitle: "개발자 단민",
+      feedUrl: "https://jeong-min.com/rss.xml",
+    });
+
+    expect(items).toHaveLength(1);
+    expect(items[0]).toEqual({
+      sourceId: "jeong-min",
+      sourceTitle: "개발자 단민",
+      title: "Terraform, 테라 폼 미쳤다",
+      url: "https://jeong-min.com/87-terraform/",
+      publishedAt: "2026-03-30T00:00:00.000Z",
+      summary: "다들 테라 좋아하시나요?",
+    });
   });
 
   it("parses Hewon Jeong list cards from the homepage", () => {

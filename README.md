@@ -9,6 +9,7 @@ GitHub Pages로 배포되는 개인 블로그 RSS 생성기입니다.
 - hoseung.me: <https://woohyun-park.github.io/rss/feeds/hoseung.xml>
 - Hewon Jeong: <https://woohyun-park.github.io/rss/feeds/hewon.xml>
 - hiddenest: <https://woohyun-park.github.io/rss/feeds/hiddenest.xml>
+- 개발자 단민: <https://woohyun-park.github.io/rss/feeds/jeong-min.xml>
 
 ## Local Commands
 

@@ -1,4 +1,4 @@
-export type SourceId = "evan-moon" | "hoseung" | "hewon" | "hiddenest";
+export type SourceId = "evan-moon" | "hoseung" | "hewon" | "hiddenest" | "jeong-min";
 
 export interface FeedItem {
   sourceId: SourceId;

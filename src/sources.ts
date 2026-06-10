@@ -28,5 +28,11 @@ export const sourceDefinitions: SourceDefinition[] = [
     siteUrl: "https://hiddenest.dev/",
     feedFile: "hiddenest.xml",
   },
+  {
+    id: "jeong-min",
+    title: "개발자 단민",
+    siteUrl: "https://jeong-min.com/",
+    feedFile: "jeong-min.xml",
+  },
 ];
 

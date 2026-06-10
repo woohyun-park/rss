@@ -5,6 +5,7 @@ import { fileURLToPath } from "node:url";
 import { renderIndexHtml } from "./buildHtml";
 import { collectEvanMoon } from "./collectors/evanMoon";
 import { collectHewon } from "./collectors/hewon";
+import { collectRssFeed } from "./collectors/rssFeed";
 import { collectSitemapSource } from "./collectors/sitemap";
 import { fetchText, type FetchText } from "./http";
 import { normalizeItems } from "./normalize";
@@ -32,6 +33,15 @@ const collectors: Record<SourceId, Collector> = {
       fetcher,
     ),
   hewon: collectHewon,
+  "jeong-min": (fetcher) =>
+    collectRssFeed(
+      {
+        sourceId: "jeong-min",
+        sourceTitle: "개발자 단민",
+        feedUrl: "https://jeong-min.com/rss.xml",
+      },
+      fetcher,
+    ),
   hiddenest: (fetcher) =>
     collectSitemapSource(
       {
