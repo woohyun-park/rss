@@ -54,6 +54,15 @@ const collectors: Record<SourceId, Collector> = {
       },
       fetcher,
     ),
+  kdy1: (fetcher) =>
+    collectRssFeed(
+      {
+        sourceId: "kdy1",
+        sourceTitle: "강동윤 (kdy1)",
+        feedUrl: "https://kdy1.dev/rss.xml",
+      },
+      fetcher,
+    ),
 };
 
 interface SourceBuildResult {

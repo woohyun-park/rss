@@ -12,6 +12,7 @@ describe("build configuration", () => {
       ["hewon", "hewon.xml"],
       ["hiddenest", "hiddenest.xml"],
       ["jeong-min", "jeong-min.xml"],
+      ["kdy1", "kdy1.xml"],
     ]);
   });
 

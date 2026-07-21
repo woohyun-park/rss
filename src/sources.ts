@@ -34,5 +34,11 @@ export const sourceDefinitions: SourceDefinition[] = [
     siteUrl: "https://jeong-min.com/",
     feedFile: "jeong-min.xml",
   },
+  {
+    id: "kdy1",
+    title: "강동윤 (kdy1)",
+    siteUrl: "https://kdy1.dev/",
+    feedFile: "kdy1.xml",
+  },
 ];
 
