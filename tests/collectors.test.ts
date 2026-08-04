@@ -7,7 +7,7 @@ import {
   parseSitemapUrlEntries,
 } from "../src/collectors/sitemap";
 import { parseHewonIndex } from "../src/collectors/hewon";
-import { parseRssFeed } from "../src/collectors/rssFeed";
+import { parseAtomFeed, parseRssFeed } from "../src/collectors/rssFeed";
 
 describe("source collectors", () => {
   it("parses Evan Moon Gatsby page-data without using the oversized RSS feed", () => {
@@ -136,6 +136,38 @@ describe("source collectors", () => {
     });
   });
 
+  it("parses an Atom feed into slim items without the full content", () => {
+    const xml = `<?xml version="1.0" encoding="UTF-8"?>
+      <feed xmlns="http://www.w3.org/2005/Atom">
+        <entry>
+          <title>CodeMirror 분석: 상태(State) 편</title>
+          <published>2026-07-29T00:00:00+00:00</published>
+          <updated>2026-07-30T00:00:00+00:00</updated>
+          <link rel="alternate" type="text/html" href="https://taegon.kim/blog/codemirror-structure-state/" />
+          <id>https://taegon.kim/blog/codemirror-structure-state/</id>
+          <content type="text">FULL POST BODY THAT MUST BE IGNORED</content>
+        </entry>
+      </feed>`;
+
+    const items = parseAtomFeed(xml, {
+      sourceId: "taegon-kim",
+      sourceTitle: "코드쓰는사람",
+      feedUrl: "https://taegon.kim/atom.xml",
+    });
+
+    expect(items).toEqual([
+      {
+        sourceId: "taegon-kim",
+        sourceTitle: "코드쓰는사람",
+        title: "CodeMirror 분석: 상태(State) 편",
+        url: "https://taegon.kim/blog/codemirror-structure-state/",
+        publishedAt: "2026-07-29T00:00:00.000Z",
+        updatedAt: "2026-07-30T00:00:00.000Z",
+        summary: undefined,
+      },
+    ]);
+  });
+
   it("parses Hewon Jeong list cards from the homepage", () => {
     const html = `<main>
       <a href="/prompt-engineering/">
@@ -167,4 +199,3 @@ describe("source collectors", () => {
     );
   });
 });
-

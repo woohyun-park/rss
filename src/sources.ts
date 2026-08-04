@@ -40,5 +40,10 @@ export const sourceDefinitions: SourceDefinition[] = [
     siteUrl: "https://kdy1.dev/",
     feedFile: "kdy1.xml",
   },
+  {
+    id: "taegon-kim",
+    title: "코드쓰는사람",
+    siteUrl: "https://taegon.kim/",
+    feedFile: "taegon-kim.xml",
+  },
 ];
-

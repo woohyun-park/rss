@@ -13,6 +13,7 @@ describe("build configuration", () => {
       ["hiddenest", "hiddenest.xml"],
       ["jeong-min", "jeong-min.xml"],
       ["kdy1", "kdy1.xml"],
+      ["taegon-kim", "taegon-kim.xml"],
     ]);
   });
 
@@ -25,6 +26,7 @@ describe("build configuration", () => {
 
     expect(html).toContain('href="https://woohyun-park.github.io/rss/feed.xml"');
     expect(html).toContain('href="https://woohyun-park.github.io/rss/feeds/evan-moon.xml"');
+    expect(html).toContain('href="https://woohyun-park.github.io/rss/feeds/taegon-kim.xml"');
     expect(html).toContain("2026-06-01T00:00:00.000Z");
   });
 });

@@ -5,7 +5,7 @@ import { fileURLToPath } from "node:url";
 import { renderIndexHtml } from "./buildHtml";
 import { collectEvanMoon } from "./collectors/evanMoon";
 import { collectHewon } from "./collectors/hewon";
-import { collectRssFeed } from "./collectors/rssFeed";
+import { collectAtomFeed, collectRssFeed } from "./collectors/rssFeed";
 import { collectSitemapSource } from "./collectors/sitemap";
 import { fetchText, type FetchText } from "./http";
 import { normalizeItems } from "./normalize";
@@ -60,6 +60,15 @@ const collectors: Record<SourceId, Collector> = {
         sourceId: "kdy1",
         sourceTitle: "강동윤 (kdy1)",
         feedUrl: "https://kdy1.dev/rss.xml",
+      },
+      fetcher,
+    ),
+  "taegon-kim": (fetcher) =>
+    collectAtomFeed(
+      {
+        sourceId: "taegon-kim",
+        sourceTitle: "코드쓰는사람",
+        feedUrl: "https://taegon.kim/atom.xml",
       },
       fetcher,
     ),
@@ -144,4 +153,3 @@ if (process.argv[1] === fileURLToPath(import.meta.url)) {
     process.exitCode = 1;
   });
 }
-

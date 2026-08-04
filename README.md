@@ -11,6 +11,7 @@ GitHub Pages로 배포되는 개인 블로그 RSS 생성기입니다.
 - hiddenest: <https://woohyun-park.github.io/rss/feeds/hiddenest.xml>
 - 개발자 단민: <https://woohyun-park.github.io/rss/feeds/jeong-min.xml>
 - 강동윤 (kdy1): <https://woohyun-park.github.io/rss/feeds/kdy1.xml>
+- 코드쓰는사람: <https://woohyun-park.github.io/rss/feeds/taegon-kim.xml>
 
 ## Local Commands
 
